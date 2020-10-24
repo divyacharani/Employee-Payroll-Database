@@ -29,3 +29,10 @@ INSERT INTO employee_payroll (name,salary,startDate) VALUES
 ```
 SELECT * FROM employee_payroll;
 ```
+
+#### Retrieve data for  particular employee
+```
+SELECT salary FROM employee_payroll WHERE name='Chandler';
+SELECT * FROM employee_payroll WHERE startDate BETWEEN CAST('2018-01-01' AS DATE) AND DATE(NOW());
+```
+
