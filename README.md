@@ -17,3 +17,11 @@ CREATE TABLE employee_payroll
  PRIMARY KEY  (id)
 );
 ```
+
+#### Create Employee Payroll Data
+```
+INSERT INTO employee_payroll (name,salary,startDate) VALUES
+	('Chandler', 1000000.00, '2018-01-03'),
+	('Joey', 2000000.00, '2019-02-04'),
+	('Rachel', 3000000.00, '2020-03-05');
+```
