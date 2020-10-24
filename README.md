@@ -25,3 +25,7 @@ INSERT INTO employee_payroll (name,salary,startDate) VALUES
 	('Joey', 2000000.00, '2019-02-04'),
 	('Rachel', 3000000.00, '2020-03-05');
 ```
+#### Retrieve all Employee Payroll Data
+```
+SELECT * FROM employee_payroll;
+```
