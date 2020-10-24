@@ -1,6 +1,6 @@
 # Employee-Payroll-Database
 
-### Create Payroll Servie Database
+#### Create Payroll Servie Database
 ```
 CREATE payroll_service;
 SHOW DATABASES;
@@ -34,5 +34,11 @@ SELECT * FROM employee_payroll;
 ```
 SELECT salary FROM employee_payroll WHERE name='Chandler';
 SELECT * FROM employee_payroll WHERE startDate BETWEEN CAST('2018-01-01' AS DATE) AND DATE(NOW());
+```
+#### Add Gender to Employee Payroll Table
+```
+ALTER TABLE employee_payroll ADD gender CHAR(1) AFTER name;
+UPDATE employee_payroll SET gender='F' WHERE name='Rachel';
+UPDATE employee_payroll SET gender='M' WHERE name='Chandler' OR name='Joey';
 ```
 
