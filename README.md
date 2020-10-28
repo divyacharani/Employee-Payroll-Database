@@ -67,3 +67,10 @@ ALTER TABLE employee_payroll ADD taxable_pay DOUBLE NOT NULL AFTER deductions;
 ALTER TABLE employee_payroll ADD income_tax DOUBLE NOT NULL AFTER taxable_pay;
 ALTER TABLE employee_payroll ADD net_pay DOUBLE NOT NULL AFTER income_tax;
 ```
+#### Update Employee as part of Sales and marketing Department
+```
+UPDATE employee_payroll SET department='Sales' WHERE name='Rachel';
+INSERT INTO employee_payroll 
+(name, department, gender, basic_pay, deductions, taxable_pay, income_tax, net_pay, startDate) VALUES
+    -> ('Rachel', 'Marketing', 'F', 4000000.00, 1000000.00, 3000000.00, 500000.00, 2500000.00, '2020-03-05');
+```
