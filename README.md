@@ -51,3 +51,10 @@ SELECT gender, MAX(salary) FROM employee_payroll GROUP BY gender;
 SELECT gender, MIN(salary) FROM employee_payroll GROUP BY gender;
 SELECT gender, COUNT(name) FROM employee_payroll GROUP BY gender;
 ```
+
+#### Add Phone, Address and Department to Employee Payroll Table
+```
+ALTER TABLE employee_payroll ADD phone VARCHAR(20) AFTER name;
+ALTER TABLE employee_payroll ADD address VARCHAR(250) AFTER phone;
+ALTER TABLE employee_payroll ADD department VARCHAR(20) NOT NULL DEFAULT 'TBD' AFTER address;
+```
