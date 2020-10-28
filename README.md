@@ -74,3 +74,44 @@ INSERT INTO employee_payroll
 (name, department, gender, basic_pay, deductions, taxable_pay, income_tax, net_pay, startDate) VALUES
 ('Rachel', 'Marketing', 'F', 4000000.00, 1000000.00, 3000000.00, 500000.00, 2500000.00, '2020-03-05');
 ```
+
+#### Implement ER Diagram
+```
+CREATE TABLE company (
+    company_id INT NOT NULL PRIMARY KEY,
+    company_name VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE employee (
+    employee_id INT UNSIGNED NOT NULL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    company_id INT,
+    phone_number VARCHAR(50) NOT NULL,
+    address VARCHAR(250) NOT NULL,
+    gender CHAR(1),
+    start_date DATE NOT NULL,
+    FOREIGN KEY (company_id) REFERENCES company (company_id)
+);
+
+CREATE TABLE department (
+    department_id INT NOT NULL PRIMARY KEY,
+    department_name VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE payroll (
+    employee_id INT UNSIGNED NOT NULL,
+    basic_pay DOUBLE NOT NULL,
+    deductions DOUBLE NOT NULL,
+    taxable_pay DOUBLE NOT NULL,
+    income_tax DOUBLE NOT NULL,
+    net_pay DOUBLE NOT NULL,
+    FOREIGN KEY (employee_id) REFERENCES employee (employee_id)
+);
+
+CREATE TABLE employee_department (
+    employee_id INT UNSIGNED NOT NULL,
+    department_id INT NOT NULL,
+    FOREIGN KEY (employee_id) REFERENCES employee (employee_id),
+    FOREIGN KEY (department_id) REFERENCES department (department_id)
+);
+```
