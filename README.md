@@ -77,6 +77,8 @@ INSERT INTO employee_payroll
 
 #### Implement ER Diagram
 ```
+DROP TABLE employee_payroll;
+
 CREATE TABLE company (
     company_id INT NOT NULL PRIMARY KEY,
     company_name VARCHAR(50) NOT NULL
@@ -114,4 +116,53 @@ CREATE TABLE employee_department (
     FOREIGN KEY (employee_id) REFERENCES employee (employee_id),
     FOREIGN KEY (department_id) REFERENCES department (department_id)
 );
+```
+
+#### Insert data into Tables
+```
+Insert INTO company VALUES (1, 'Company-A');
+
+Insert INTO employee VALUES (101, 'Bill', 1 , 9876543210, 'Maharashtra', 'M', '2018-01-03');
+Insert INTO employee VALUES (102, 'Terisa', 1 , 8765432109, 'Delhi', 'F', '2018-02-04');
+Insert INTO employee VALUES (103, 'Charlie', 1 , 7654321098, 'Karnataka', 'M', '2018-03-05');
+Insert INTO employee VALUES (104, 'Mark', 1 , 7689543210, 'Telangana', 'M', '2018-02-06');
+
+Insert INTO department VALUES (50, 'Sales');
+Insert INTO department VALUES (51, 'Marketing');
+Insert INTO department VALUES (52, 'HR');
+
+Insert INTO payroll VALUES (101,1000000.00, 100000.00, 900000.00, 100000.00, 800000.00);
+Insert INTO payroll VALUES (102,2000000.00, 100000.00, 1900000.00, 100000.00, 1800000.00);
+Insert INTO payroll VALUES (103,3000000.00, 100000.00, 2900000.00, 100000.00, 2800000.00);
+Insert INTO payroll VALUES (104,4000000.00, 100000.00, 3900000.00, 100000.00, 3800000.00);
+
+Insert INTO employee_department VALUES (101,50);
+Insert INTO employee_department VALUES (101,51);
+Insert INTO employee_department VALUES (102,51);
+Insert INTO employee_department VALUES (103,50);
+Insert INTO employee_department VALUES (102,50);
+```
+
+
+#### Retrieve Data from Table
+```
+SELECT employee.name, payroll.net_pay FROM payroll
+INNER JOIN employee ON payroll.employee_id = employee.employee_id
+WHERE employee.name = 'Bill';
+
+SELECT gender, SUM(payroll.basic_pay) FROM employee
+INNER JOIN payroll ON payroll.employee_id = employee.employee_id
+GROUP BY employee.gender;
+
+SELECT gender, MIN(payroll.basic_pay) FROM employee
+INNER JOIN payroll ON payroll.employee_id = employee.employee_id
+GROUP BY employee.gender;
+
+SELECT gender, MAX(payroll.basic_pay) FROM employee
+INNER JOIN payroll ON payroll.employee_id = employee.employee_id
+GROUP BY employee.gender;
+
+SELECT gender, COUNT(payroll.basic_pay) FROM employee
+INNER JOIN payroll ON payroll.employee_id = employee.employee_id
+GROUP BY employee.gender;
 ```
